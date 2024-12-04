@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-04T14:20:15 IST" name="Suite" finished-at="2024-12-04T14:20:36 IST" duration-ms="21112">
+    <groups>
+    </groups>
+    <test started-at="2024-12-04T14:20:15 IST" name="Test" finished-at="2024-12-04T14:20:36 IST" duration-ms="21112">
+      <class name="team.dhruva.FiixRegression">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:team.dhruva.FiixRegression@36ebc363]" started-at="2024-12-04T14:20:15 IST" name="launchBrowser" finished-at="2024-12-04T14:20:25 IST" duration-ms="10840" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verify_Login()[pri:1, instance:team.dhruva.FiixRegression@36ebc363]" started-at="2024-12-04T14:20:25 IST" name="verify_Login" finished-at="2024-12-04T14:20:28 IST" duration-ms="2290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_Login -->
+        <test-method signature="create_Part_Supplies()[pri:9, instance:team.dhruva.FiixRegression@36ebc363]" started-at="2024-12-04T14:20:28 IST" name="create_Part_Supplies" finished-at="2024-12-04T14:20:35 IST" duration-ms="7629" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- create_Part_Supplies -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:team.dhruva.FiixRegression@36ebc363]" started-at="2024-12-04T14:20:35 IST" name="closeBrowser" finished-at="2024-12-04T14:20:36 IST" duration-ms="326" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- team.dhruva.FiixRegression -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

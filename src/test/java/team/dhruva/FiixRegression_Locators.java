@@ -37,6 +37,7 @@ public interface FiixRegression_Locators {
 	String PURCHASING_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Purchasing\")]";
 	String SUPPLIES_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Supplies\")]";
 	String REPORTS_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Reports\")]";
+	String AUDIT_TRAIL_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Audit Trail \")]";
 	String PO_SUB_MENU = "//li[contains(text(),'Purchase Orders')]";
 	String PO_RECEIPTS_SUB_MENU = "//li[contains(text(),'Receipts')]";
 	String PO_RFQs_SUB_MENU = "//li[contains(text(),'RFQs')]";
@@ -91,12 +92,25 @@ public interface FiixRegression_Locators {
 	String REPORT_CATEGORY_DROPDOWN = "//div[text()=\"Report Category\"]/..//select";
 	String REPORT_TYPE = "//div[text()=\"Report Category\"]/..//select/option[text()=\"test\"]";
 	String DESIGN_TAB = "//li/p[text()=\"Design\"]";
-	String TABLE_HYPERLINK = "//a[text()=\"click here to pick the main table\"]";
-	String SELECT_TABLE = "//tbody/tr/td/div[text()=\"Asset\"]";
+	String VIEW_TABLE_HYPERLINK = "//a[text()=\"click here to pick the main table\"]";
+	String SELECT_TABLE_ASSET = "//tbody/tr/td/div[text()=\"Asset\"]";
 	String EXPAND_TABLE_ICON = "//img[@src=\"/pg/list/expand.png\"]";
 	String ROW_CODE = "//span[text()=\"Code\"]";
-	String FIELDS_CONTAINER = "id=\"fields_tableContainer\"";
-	String RUN_BUTTON = "id=\"contextButtonRun\"";
+	String FIELDS_CONTAINER = "//div[@id=\"fields_tableContainer\"]";
+	String RUN_BUTTON = "//span[@id=\"contextButtonRun\"]";
 	String RUN_BUTTON_POPUP = "(//span[@id=\"contextButtonRun\"])[2]";
+	String GENERATING_REPORT_POPUP = "//p[text()=\"Generating report...\"]";
 	
+	//Audit trail
+	String START_DATE_PICKER = "//label[@title=\"Start Date\"]/../..//mat-datepicker-toggle/button";
+	String END_DATE_PICKER = "//label[@title=\"End Date\"]/../..//span[@class=\"mat-mdc-button-touch-target\"]";
+	String PREVIOS_MONTH_ARROW = "//button[@aria-label=\"Previous month\"]";
+	String ALL_DATE_SELECTOR = "//td[@role=\"gridcell\"]/button[not (contains(@aria-disabled,\"true\"))]";
+	String IFRAME_ID = "#v6IframeId";
+	String DOWNLOAD_BUTTON = "//button[@name=\"download-button\"]";
+	String DOWNLOAD_LOADER = "//*[text()=\"This can take up to 2 minutes. Please stay on this page until the download is complete.\"]";
+	String EQUIPMENT_TAB = "#equipmentTab";
+
+	//self Signup
+	String CAPCHA = "//div[@class=\"first-form-wrapper\"]/img";
 }

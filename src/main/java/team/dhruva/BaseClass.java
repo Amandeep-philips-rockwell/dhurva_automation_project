@@ -1,5 +1,7 @@
 package team.dhruva;
 
+import java.util.Arrays;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -23,12 +25,11 @@ public class BaseClass implements Constant {
 	public void launchBrowser() {
 		try {
 			playwright = Playwright.create();
-			Browser browser = playwright.chromium()
-					.launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(50));
-//			BrowserContext context = browser.newContext();
-			  BrowserContext context = browser.newContext(new Browser.NewContextOptions()
-	                    .setViewportSize(1500, 800));
+			browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(50)
+					.setArgs(Arrays.asList("--start-maximized")));
+			context = browser.newContext(new Browser.NewContextOptions().setViewportSize(null));
 			page = context.newPage();
+
 			page.navigate(URL);
 
 		} catch (Exception e) {
@@ -38,6 +39,8 @@ public class BaseClass implements Constant {
 
 	@AfterTest
 	public void closeBrowser() {
+		page.close();
+		browser.close();
 		playwright.close();
 	}
 }

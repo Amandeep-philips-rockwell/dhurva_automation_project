@@ -6,19 +6,19 @@ import org.testng.annotations.Test;
 
 import com.microsoft.playwright.Locator;
 
-public class FiixRegression extends CommonMethods implements FiixRegression_Locators {
+public class FiixRegression extends CommonMethods implements FiixRegression_Locators,Constant {
 
-	@Test(priority = 1)
-	public void verify_Login() throws Exception {
-		String title = page.title();
-		assertEquals("Fiix", title);
-		type(USERNAME_FIELD, USERNAME);
-		type(PASSWORD_FIELD, PASSWORD);
-		click(SIGNIN_BUTTON);
-		Thread.sleep(2000);
-		assertEquals(true, visible(FIXX_HEADER));
-
-	}
+//	@Test(priority = 1)
+//	public void verify_Login() throws Exception {
+//		String title = page.title();
+//		assertEquals("Fiix", title);
+//		type(USERNAME_FIELD, USERNAME);
+//		type(PASSWORD_FIELD, PASSWORD);
+//		click(SIGNIN_BUTTON);
+//		Thread.sleep(2000);
+//		assertEquals(true, visible(FIXX_HEADER));
+//
+//	}
 //
 //	@Test(priority = 2)
 //	public void verify_Dashboard() throws Exception {
@@ -148,15 +148,14 @@ public class FiixRegression extends CommonMethods implements FiixRegression_Loca
 //		click(SAVE_BUTTON);
 //		click(BACK_BUTTON);
 //		Thread.sleep(1000);
-//		String locator = RECEIPTS_STATUS_ON_TABLE.replace("000",reciptCode);
-//		locator = locator.replace("test","Received");
+//		String locator = RECEIPTS_STATUS_ON_TABLE.replace("000", reciptCode);
+//		locator = locator.replace("test", "Received");
 //		assertEquals(true, visible(locator));
-//
 //
 //	}
 //
 //	@Test(priority = 8)
-//	public void create_PO_Receipt() throws Exception {
+//	public void create_PO_RFQs() throws Exception {
 //		click(PURCHASING_MENU);
 //		click(PO_RFQs_SUB_MENU);
 //		click(NEW_BUTTON);
@@ -187,6 +186,7 @@ public class FiixRegression extends CommonMethods implements FiixRegression_Loca
 //		assertEquals(visible(locator), true);
 //
 //	}
+//
 //	@Test(priority = 9)
 //	public void createPartSupplies() throws Exception {
 //		click(SUPPLIES_MENU);
@@ -197,16 +197,57 @@ public class FiixRegression extends CommonMethods implements FiixRegression_Loca
 //		search(SEARCH_BOX, partSuppliesName);
 //		assertEquals(totalRecords(RECORD_COUNT) == 1, true);
 //	}
-	@Test(priority = 10)
-	public void createVerifyReports() throws Exception {
-		click(SUPPLIES_MENU);
-		click(NEW_BUTTON);
-		click(DESIGN_REPORTS_BUTTON);
-		String reportName = getText(PARTS_SUPPLIES_NAME_EDITBOX);
-		dropdown(REPORT_CATEGORY_DROPDOWN,REPORT_TYPE.replace("test", "Open Work Order Reports"));
-		dragAndDrop(ROW_CODE,FIELDS_CONTAINER);
-		click(SAVE_BUTTON);
-		click(RUN_BUTTON);
-	}
+//
+//	@Test(priority = 10)
+//	public void createVerifyReports() throws Exception {
+//		click(REPORTS_MENU);
+//		click(NEW_BUTTON);
+//		click(DESIGN_REPORTS_BUTTON);
+//		String reportName = getText(PARTS_SUPPLIES_NAME_EDITBOX);
+//		selectDropDown(REPORT_CATEGORY_DROPDOWN, "Open Work Order Reports");
+//		click(SAVE_BUTTON);
+//		click(DESIGN_TAB);
+//		click(VIEW_TABLE_HYPERLINK);
+//		click(SELECT_TABLE_ASSET);
+//		click(EXPAND_TABLE_ICON);
+//		dragAndDrop(ROW_CODE, FIELDS_CONTAINER);
+//		click(SAVE_BUTTON);
+//		click(RUN_BUTTON);
+//		click(RUN_BUTTON_POPUP);
+////		Thread.sleep(5000);
+//		switchToNewlOpenTab();
+//	}
+//
+//	@Test(priority = 11)
+//	public void verifyAudiTrailforWO() throws Exception {
+//		click(AUDIT_TRAIL_MENU);
+//		iFrameClick(IFRAME_ID, START_DATE_PICKER);
+//		iFrameClick(IFRAME_ID, PREVIOS_MONTH_ARROW);
+//		customElementIframeClick(IFRAME_ID, ALL_DATE_SELECTOR, 1);
+//		iFrameClick(IFRAME_ID, END_DATE_PICKER);
+//		customElementIframeClick(IFRAME_ID, ALL_DATE_SELECTOR, -1);
+//		iFrameClick(IFRAME_ID, DOWNLOAD_BUTTON);
+//		downloadAndReadDataForAudit(IFRAME_ID, DOWNLOAD_BUTTON);
+//
+//	}
+//
+//	@Test(priority = 12)
+//	public void verifyAudiTrailforEquipmentS() throws Exception {
+//		click(AUDIT_TRAIL_MENU);
+//		iFrameClick(IFRAME_ID, EQUIPMENT_TAB);
+//		iFrameClick(IFRAME_ID, START_DATE_PICKER);
+//		iFrameClick(IFRAME_ID, PREVIOS_MONTH_ARROW);
+//		customElementIframeClick(IFRAME_ID, ALL_DATE_SELECTOR, 1);
+//		iFrameClick(IFRAME_ID, END_DATE_PICKER);
+//		customElementIframeClick(IFRAME_ID, ALL_DATE_SELECTOR, -1);
+//		iFrameClick(IFRAME_ID, DOWNLOAD_BUTTON);
+//		downloadAndReadDataForAudit(IFRAME_ID, DOWNLOAD_BUTTON);
+//
+//	}
+	@Test(priority = 12)
+	public void verifyAudiTrailforEquipmentS() throws Exception {
+//		getURL(SELF_SIGNUP);
+		imageToText();
 	
+	}
 }

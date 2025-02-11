@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,7 +50,7 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class CommonMethods extends BaseClass {
 
-	Faker faker = new Faker();
+	public Faker faker = new Faker();
 
 	public void type(String locator, String text) {
 		page.locator(locator).fill(text);
@@ -78,20 +79,20 @@ public class CommonMethods extends BaseClass {
 //		frame.click(locator);
 	}
 
-    public static List<String> splitAndMerge(List<String> inputList) {
-        List<String> mergedList = new ArrayList<>();
+	public static List<String> splitAndMerge(List<String> inputList) {
+		List<String> mergedList = new ArrayList<>();
 
-        for (String str : inputList) {
-            String[] parts = str.split(",");
-            for(String s : parts) {
-            	s = s.replace("\"", "");
-            }
-            mergedList.addAll(Arrays.asList(parts)); 
-        }
+		for (String str : inputList) {
+			String[] parts = str.split(",");
+			for (String s : parts) {
+				s = s.replace("\"", "");
+			}
+			mergedList.addAll(Arrays.asList(parts));
+		}
 
-        return mergedList;
-    }
-	
+		return mergedList;
+	}
+
 	public void downloadAndReadDataForAudit(String iframe, String locator) throws IOException {
 
 		// Wait for the download to start
@@ -375,54 +376,84 @@ public class CommonMethods extends BaseClass {
 		return blackAndWhiteImage;
 	}
 
-	public boolean compareList(List<String> one, List<String> two) {
-    	System.out.println("list 1 = "+ one);
-    	System.out.println("list 2 = "+ two);
-		Assert.assertEquals(one.size() == two.size(), true);
-		boolean elementsEqual = true;
-		String s,a;
-		for (int i = 0; i < one.size(); i++) {
-			if (one.get(i).length()>1 && two.get(i).length()>1) {
-				s = one.get(i).replace("\"", "").trim();
-				a = two.get(i).replace("\"", "").trim();
-			if (!s.equals(a)) {
-				System.out.println(s +" != "+ a);
-				elementsEqual = false;
-				break; // Exit the loop early if a mismatch is found
-			}}
-		}
-		return elementsEqual;
-	}
+//	public boolean compareList(List<String> one, List<String> two) {
+//		System.out.println("exported = " + one);
+//		System.out.println("table = " + two);
+//		Assert.assertEquals(one.size() == two.size(), true);
+//		boolean elementsEqual = true;
+//		String s = null, a = null;
+//		for (int i = 0; i < one.size(); i++) {
+//			s = one.get(i);
+//			a = two.get(i);
+//			if (s.length() > 1 || a.length() > 1) {
+//				s.replace("\"", "").trim();
+//				a.replace("\"", "").trim();
+//			}
+//			if (s == null && a == null) {
+//				System.out.println("null object compaire");
+//			} else if (!s.equals(a)) {
+//				System.out.println(s + " != " + a);
+//				elementsEqual = false;
+//				break; // Exit the loop early if a mismatch is found
+//			}
+//		}
+//		return elementsEqual;
+//	}
 
-	public List<String>  fixDataForSM(List<String> data ) {
-		List<String> fixedData = new ArrayList<String>();
-		for (String value:data) {
-			if(value.contains("Every day")) {
-				value = "Every day";
+	public boolean compareList(List<String> one, List<String> two) {
+		try {
+//			System.out.println("exported = " + one);
+//			System.out.println("table = " + two);
+
+			// Check if the lists have the same size
+			if (one.size() != two.size()) {
+				System.out.println("List sizes are different.");
+				return false;
 			}
-			fixedData.add(value);
+
+			// Iterate through the lists and compare elements
+			for (int i = 0; i < one.size(); i++) {
+				String a = one.get(i);
+				String b = two.get(i);
+
+				// Remove surrounding quotes and trim
+				a = a.replace("\"", "").trim();
+				b = b.replace("\"", "").trim();
+				a = a.replaceAll("; ", "");
+				b = b.replaceAll("; ", "");
+				a = a.replaceAll("\n", "");
+				b = b.replaceAll("\n", "");
+
+//				a = a.replaceAll("[\\\"\\n; ]+", "");
+//				b = b.replaceAll("[\\\"\\n; ]+", "");
+//				a.trim();
+//				b.trim();
+
+				if (a != null && b != null) {
+					System.out.println("Comparing " + a + " = " + b);
+					// Compare the elements
+					if (!a.equals(b)) {
+						System.out.println(a + " != " + b);
+						return false;
+
+					}
+				}
+			}
+
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception occur");
+			return false;
 		}
-		return fixedData;
 	}
-	
-//    	if (one.equals(two)){
-//        	System.out.println("list of size  = "+one.size()+ " Matched");
-//    		return true;
-//    	}else {
-//    		System.out.println("List does not Match");
-//        	System.out.println("list 1 = "+ one);
-//        	System.out.println("list 2 = "+ one);
-//        	return false;
-//    	}
-//
-//    }
 
 	public void create_csv_file(String[] header, String[] record, String filename) {
 		List<String[]> data = new ArrayList<>();
 		data.add(header);
 		data.add(record);
 
-		try (CSVWriter writer = new CSVWriter(new FileWriter(filename + "csv"))) {
+		try (CSVWriter writer = new CSVWriter(new FileWriter("resource\\" + filename + ".csv"))) {
 			writer.writeAll(data);
 			System.out.println("Import file created");
 		} catch (IOException e) {
@@ -430,7 +461,8 @@ public class CommonMethods extends BaseClass {
 		}
 	}
 
-	public List<String> clickkExportToDownloadFile(String locator) throws IOException, CsvValidationException {
+	public List<String> clickExportToDownloadFile(String locator, int count)
+			throws IOException, CsvValidationException {
 		// Wait for the download to start
 		Download download = page.waitForDownload(() -> {
 			// Perform the action that initiates download
@@ -443,10 +475,24 @@ public class CommonMethods extends BaseClass {
 		download.saveAs(Paths.get(System.getProperty("user.home") + File.separator + "Downloads", filename));
 
 		String filePath = System.getProperty("user.home") + File.separator + "Downloads\\" + filename;
-		return readCSV(filePath);
+		return readCSV(filePath, count);
 	}
 
-	public static List<String> readCSV(String filePath) throws IOException, CsvValidationException {
+	public List<String> fixTableData(List<String> tableData) {
+		List<String> fixData = new ArrayList<>();
+		for (String s : tableData) {
+			if (s.length() > 0 && s.contains(",")) {
+				String[] sdata = s.split(",");
+				for (String value : sdata) {
+					fixData.add(value.trim()); // Trim to remove leading/trailing whitespace
+				}
+			}
+			fixData.add(s);
+		}
+		return fixData;
+	}
+
+	public static List<String> readCSV(String filePath, int count) throws IOException, CsvValidationException {
 //		List<String> data = new ArrayList<>();
 //		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 //			// Skip the header row
@@ -462,26 +508,42 @@ public class CommonMethods extends BaseClass {
 //			}
 //		}
 //		return data;
-        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-            // Skip the header row
-            reader.readNext(); 
+		List<String> fixedData = new ArrayList<String>();
+		try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+			// Skip the header row
 
-            // Read the first row after the header
-            String[] nextLine = reader.readNext(); 
-            if (nextLine != null) {
-                return Arrays.asList(nextLine); 
-            } else {
-                return List.of(); // Return an empty list if no data is found after the header
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return List.of(); // Return an empty list on error
-        }
+			reader.readNext();
+
+			// Read the first row after the header
+			String[] nextLine = reader.readNext();
+			if (count > 0 && nextLine.length != count) {
+				for (int i = 0; i < count; i++) {
+					fixedData.add(nextLine[i]);
+				}
+				return fixedData;
+
+			}
+
+			if (nextLine != null) {
+				return Arrays.asList(nextLine);
+			} else {
+				return List.of(); // Return an empty list if no data is found after the header
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return List.of(); // Return an empty list on error
+		}
 	}
 
-	public String[] dataGenForImport() {
+	public void uploadFile(String location, String filename) {
+		Locator fileInput = page.locator(location);
 
-		String[] data = { "Name", "Age", "City" };
-		return data;
+		// Path to the file you want to upload
+//        String filePath = "/path/to/your/file.txt"; 
+		Path file = Paths.get("resource\\" + filename + ".csv");
+
+		// Upload the file
+		fileInput.setInputFiles(file);
+
 	}
 }

@@ -20,11 +20,24 @@ public interface Constant {
 //String USERNAME = "Amandeep";
 //String PASSWORD = "cmms1234";
 //String URL = "https://smoketest.macmms.com/";
+	
+//Zilla
+//	
+//	String USERNAME = "apzuser";
+//	String PASSWORD = "12345";
+//	String URL = "https://apent.fiixzilla.ninja/";
+	
+	
 
 	List<String> s = new ArrayList<String>(Arrays.asList("General", "Completion", "Labor Tasks", "Parts",
 			"Meter Readings", "Purchase Order", "Misc Costs Page", "Notifications", "Files", "Work Log", "Custom"));
 
 // Inport headers
-	String[] WO_HEADER = { "Name", "Age", "City" };
+	String[] WO_HEADER = { "Code", "Description", "Status" };
+	String[] SM_HEADER = { "Code", "Description" };
+	String[] ASSET_HEADER = { "Name", "Code", "Description" };
+	String[] PnS_HEADER = { "Name", "Code", "Description" };
+	String[] BUSINESSES_HEADER = { "Code", "Name", "Address" };
+
 
 }

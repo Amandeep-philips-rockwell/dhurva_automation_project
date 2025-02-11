@@ -6,9 +6,23 @@
     </listeners>
   <test thread-count="5" name="Test">
     <classes>
-          <class name="team.dhruva.testcases.LoginTests"/>
-  <!--    <class name="team.dhruva.testcases.WOTests"/> -->
-      <class name="team.dhruva.testcases.SMTests"/>
+           <class name="team.dhruva.testcases.LoginTests"/>
+
+          <class name="team.dhruva.testcases.SuppliesTests"/>
+    
+          
+    <!--     
+            <class name="team.dhruva.testcases.DashboardTests"/> 
+            <class name="team.dhruva.testcases.SMTests"/> 
+          <class name="team.dhruva.testcases.WOTests"/>
+           <class name="team.dhruva.testcases.PurshaseTests"/>
+          <class name="team.dhruva.testcases.ReportTests"/>
+          <class name="team.dhruva.testcases.AuditTrailTests"/>
+          <class name="team.dhruva.testcases.AssetTests"/>
+          <class name="team.dhruva.testcases.SuppliesTests"/>
+          
+          
+           -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

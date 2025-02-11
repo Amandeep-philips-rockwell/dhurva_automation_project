@@ -15,6 +15,11 @@ public interface GlobalLocators {
 	String TABLE_CUSTOM_ROW_ALL_DATA = "//tr[000]/td[@class=\"listColumnValueReadOnly\"]//p";
 	String NEW_BUTTON = "//div[@class=\"actionButton action noselect\"]//span[text()=\"New\"]";
 	String NO_SITE_SITE = "//div[@class=\"hasBootstrapAlttextTooltip\"]/p[text()=\"(No Site)\"]";
+	String FILE_UPLOAD_FIELD = "//form[@id=\"INPUT_FILE_NAME_form\"]/div/input[1]";
+	String CONTINUE_BUTTON = "//div[@class=\"pushButtonsPane\"]//span[contains(text(),\"Continue\")]";
+	String UPLOAD_IMPORT_BUTTON = "//div[@class=\"saveButtonAct action noselect\"]/span[text()=\"Import\"]";
+	String UPLOAD_DONE_BUTTON = "//div[@class=\"saveButtonAct action noselect\"]/span[text()=\"Done\"]";
+	
 	
 	// Menu
 	String MAINTANACE_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Maintenance\")]";
@@ -31,13 +36,25 @@ public interface GlobalLocators {
 	String PO_RECEIPTS_SUB_MENU = "//li[contains(text(),'Receipts')]";
 	String PO_RFQs_SUB_MENU = "//li[contains(text(),'RFQs')]";
 	String PART_SUPPLIES_SUB_MENU = "//li[contains(text(),'Parts And Supplies')]";
+	String CURRENT_STOCK_SUB_MENU = "//li[contains(text(),'Current Stock')]";
+	String INVENTORY_CYCLE_COUNT_SUB_MENU = "//li[contains(text(),'Inventory Cycle Count')]";
+	String BILL_OF_MATERIALS_GROUPS_SUB_MENU = "//li[contains(text(),'Bill Of Materials Groups')]";
+	String BUSINESSES_SUB_MENU = "//li[contains(text(),'Businesses')]";
+
+
+
 	
 	//table
 	String CUSTOM_RECORDS = "//td[@class=\"listColumnValueReadOnly\"]//p[text()=\"000\"]";
+	String TABLE_HEADERS = "//tr/th//span";
 	
 	//Create screen
 	String ALL_TABS = "//ul/li/p";
 	
+	//Part and Supplies
+	String PARTS_SUPPLIES_NAME_EDITBOX = "//div[@class=\"formExtraLarge\"]/input";
+	
 	// 
-
+	String TREE_VIEW_ICON = "//img[@alt=\"View as tree\"]";
+	String LIST_VIEW_ICON = "//img[@alt=\"View as a flat list\"]";
 }

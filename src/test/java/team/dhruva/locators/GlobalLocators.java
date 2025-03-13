@@ -5,6 +5,8 @@ public interface GlobalLocators {
 	String SAVE_BUTTON = "//div[text()=\"Save\"]";
 	String SEARCH_BOX = "//input[contains(@placeholder,\"search\")]";
 	String OK_BUTTON = "//div[contains(text(),\"OK\")]";
+	String OK_BUTTON_2 = "(//div[contains(text(),\"OK\")])[2]";
+	String OK_BUTTON_3 = "(//div[contains(text(),\"OK\")])[3]";
 	String BACK_BUTTON = "//div[@class=\"actionButton action noselect\"]/span[text()=\"Back\"]";
 	String TABLE_ROW = "//tbody/tr/td[1]";
 	String RECORD_COUNT = "//div[@class=\"listPagingContainer35\"]//span";
@@ -19,12 +21,15 @@ public interface GlobalLocators {
 	String CONTINUE_BUTTON = "//div[@class=\"pushButtonsPane\"]//span[contains(text(),\"Continue\")]";
 	String UPLOAD_IMPORT_BUTTON = "//div[@class=\"saveButtonAct action noselect\"]/span[text()=\"Import\"]";
 	String UPLOAD_DONE_BUTTON = "//div[@class=\"saveButtonAct action noselect\"]/span[text()=\"Done\"]";
+	String TOP_LOADING_MSG = "#loadingBar";
 	
 	
 	// Menu
 	String MAINTANACE_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Maintenance\")]";
 	String WO_SUB_MENU = "(//li[contains(text(),'Work Orders')])[2]";
 	String SM_SUB_MENU = "//li[contains(text(),'Scheduled Maintenance')]";
+	String TASK_GROUPS_SUB_MENU = "//li[contains(text(),'Task Groups')]";
+	String PROJECTS_SUB_MENU = "//li[contains(text(),'Projects')]";
 	String DASHBOARD_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Dashboard\")]";
 	String ASSETS_MENU = "//span[@class=\"fiix-expanded\"][contains(text(),\"Assets\")]";
 	String ALL_ASSETS_SUB_MENU = "//li[contains(text(),'All Assets')]";
@@ -54,7 +59,11 @@ public interface GlobalLocators {
 	//Part and Supplies
 	String PARTS_SUPPLIES_NAME_EDITBOX = "//div[@class=\"formExtraLarge\"]/input";
 	
-	// 
+	// views
 	String TREE_VIEW_ICON = "//img[@alt=\"View as tree\"]";
 	String LIST_VIEW_ICON = "//img[@alt=\"View as a flat list\"]";
+	
+	// tabs
+	String TAB_NAME = "//div[@class=\"formTabsContainer35\"]//li/p[contains(text(),\"test\")]";
+	
 }

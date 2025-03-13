@@ -15,6 +15,7 @@ import team.dhruva.locators.WOLocators;
 
 public class WOTests extends WOExecutor {
 	String woCode = null;
+//	String woCode = "87563";
 
 	@Test(priority = 1)
 	public void verify_import() throws Exception {
@@ -23,7 +24,7 @@ public class WOTests extends WOExecutor {
 		String[] genData = dataGenForImport();
 		create_csv_file(WO_HEADER, genData, "WO");
 		click(IMPORT_BUTTON);
-		uploadFile(FILE_UPLOAD_FIELD, "WO");
+		uploadFile(FILE_UPLOAD_FIELD, "WO"+".csv");
 		click(CONTINUE_BUTTON);
 		click(CONTINUE_BUTTON);
 		click(UPLOAD_IMPORT_BUTTON);
@@ -59,14 +60,35 @@ public class WOTests extends WOExecutor {
 		search(SEARCH_BOX, woCode);
 		assertEquals(true, totalRecords(RECORD_COUNT) >= 1);
 	}
-
-	@Test(priority = 4)
+	@Test(priority = 4,dependsOnMethods = "create_WO_Verify_Using_Search")
 	public void verify_all_tabs_present() throws Exception {
 		click(CUSTOM_RECORDS.replace("000", woCode));
 		Thread.sleep(1000);
 		List<String> WOTabs = getAllElements(ALL_TABS).allTextContents();
-		assertEquals(compareList(WOTabs, s), true);
+		assertEquals(compareList(WOTabs, WO_TABS), true);
 
 	}
+	@Test(priority = 5)
+	public void add_tasks() throws Exception {
+		click(MAINTANACE_MENU);
+		click(WO_SUB_MENU);
+		search(SEARCH_BOX, woCode);
+		click(CUSTOM_RECORDS.replace("000", woCode));
+		click(TAB_NAME.replace("test", "Labor Tasks"));
+		assertEquals(1,totalElement(LABOR_TASKS_ROW));
+		addLaborTasks(2);
+		Thread.sleep(2000);
+		assertEquals(totalElement(LABOR_TASKS_ROW),2);
+		click(SAVE_BUTTON);
 
+	}
+	@Test(priority = 6)
+	public void add_task_groups() throws Exception {
+		page_check();
+		search(SEARCH_BOX, woCode);
+		click(CUSTOM_RECORDS.replace("000", woCode));
+		click(TAB_NAME.replace("test", "Labor Tasks"));
+		addTaskGroups();
+
+	}
 }

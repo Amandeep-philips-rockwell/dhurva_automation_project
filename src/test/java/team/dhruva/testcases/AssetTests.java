@@ -43,7 +43,7 @@ public class AssetTests extends AssetExecutor{
 		String[] genData = dataGenForImport();
 		create_csv_file(ASSET_HEADER, genData, "ASSET");
 		click(IMPORT_BUTTON);
-		uploadFile(FILE_UPLOAD_FIELD, "ASSET");
+		uploadFile(FILE_UPLOAD_FIELD, "ASSET"+".csv");
 		click(CONTINUE_BUTTON);
 		click(CONTINUE_BUTTON);
 		click(UPLOAD_IMPORT_BUTTON);

@@ -22,6 +22,7 @@ public class ReportTests extends ReportExecutor{
 		click(RUN_BUTTON);
 		click(RUN_BUTTON_POPUP);
 //		Thread.sleep(5000);
+		waitforElementInvisible(GENERATING_REPORT_POPUP);
 		switchToNewlOpenTab();
 	}
 }

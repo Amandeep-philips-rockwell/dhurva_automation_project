@@ -39,6 +39,7 @@ public class Reporting extends CommonMethods implements ITestListener {
 	    captureScreenshot(screenshotPath);
 		test.fail("Test Failed", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
 		test.fail(result.getThrowable());
+		callReset();
 	}
 
 	@Override

@@ -17,7 +17,8 @@ public class SuppliesTests extends SuppliesExecutor {
 	public void verify_export_in_tree_view_PnS() throws Exception {
 		click(SUPPLIES_MENU);
 		click(PART_SUPPLIES_SUB_MENU);
-		click(TREE_VIEW_ICON);
+		click(TREE_VIEW_ICON,1000);
+		click(TABLE_FIRST_ROW_CHECK_BOX);
 		List<String> tableData = readTabledatafromSuppliesTreeView(CUSTOM_ROW_TABLE_DATA_FOR_SUPPLIES.replace("000", "1"));
 		List<String> exportedData = clickExportToDownloadFile(EXPORT_BUTTON, (tableData.size()));
 		assertEquals(compareList(exportedData, tableData), true);
@@ -27,7 +28,7 @@ public class SuppliesTests extends SuppliesExecutor {
 	public void verify_export_in_list_view_PnS() throws Exception {
 		click(SUPPLIES_MENU);
 		click(PART_SUPPLIES_SUB_MENU);
-		click(LIST_VIEW_ICON);
+		click(LIST_VIEW_ICON,1000);
 		click(TABLE_FIRST_ROW_CHECK_BOX);
 		List<String> tableData = readTabledatafromSupplies(CUSTOM_ROW_TABLE_DATA_FOR_SUPPLIES.replace("000", "1"));
 		List<String> exportedData = clickExportToDownloadFile(EXPORT_BUTTON, tableData.size());
@@ -42,20 +43,19 @@ public class SuppliesTests extends SuppliesExecutor {
 		String[] genData = dataGenForImportPnS();
 		create_csv_file(PnS_HEADER, genData, "P&S");
 		click(IMPORT_BUTTON);
-		uploadFile(FILE_UPLOAD_FIELD, "P&S");
+		uploadFile(FILE_UPLOAD_FIELD, "P&S"+".csv");
 		click(CONTINUE_BUTTON);
 		click(CONTINUE_BUTTON);
 		click(UPLOAD_IMPORT_BUTTON);
 		click(UPLOAD_DONE_BUTTON);
 		search(SEARCH_BOX, genData[1]);
 		Assert.assertEquals(totalRecords(RECORD_COUNT) >= 1, true);
-		click(TABLE_FIRST_ROW_FIRST_CELL);
-		Thread.sleep(1000);
+		click(TABLE_FIRST_ROW_FIRST_CELL,1000);
 		Assert.assertEquals(visible(SAVE_BUTTON), true);
 
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 4)
 	public void createPartSupplies() throws Exception {
 		click(SUPPLIES_MENU);
 		click(NEW_BUTTON);
@@ -122,15 +122,14 @@ public class SuppliesTests extends SuppliesExecutor {
 		String[] genData = dataGenForImportBusinesses();
 		create_csv_file(BUSINESSES_HEADER, genData, "BUSINESSES");
 		click(IMPORT_BUTTON);
-		uploadFile(FILE_UPLOAD_FIELD, "BUSINESSES");
+		uploadFile(FILE_UPLOAD_FIELD, "BUSINESSES"+".csv");
 		click(CONTINUE_BUTTON);
 		click(CONTINUE_BUTTON);
 		click(UPLOAD_IMPORT_BUTTON);
 		click(UPLOAD_DONE_BUTTON);
 		search(SEARCH_BOX, genData[1]);
 		Assert.assertEquals(totalRecords(RECORD_COUNT) >= 1, true);
-		click(TABLE_FIRST_ROW_FIRST_CELL);
-		Thread.sleep(1000);
+		click(TABLE_FIRST_ROW_FIRST_CELL,1000);
 		Assert.assertEquals(visible(SAVE_BUTTON), true);
 
 	}

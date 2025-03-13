@@ -2,6 +2,8 @@ package team.dhruva;
 
 import java.util.Arrays;
 
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -43,4 +45,6 @@ public class BaseClass implements Constant {
 		browser.close();
 		playwright.close();
 	}
+	
+
 }

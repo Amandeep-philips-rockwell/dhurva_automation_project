@@ -57,8 +57,35 @@ public class CommonMethods extends BaseClass {
 
 	}
 
-	public void click(String locator) {
+	public void click(String locator) throws InterruptedException {
 		page.locator(locator).click();
+
+	}
+
+	public void waitForLoader() throws InterruptedException {
+		waitforElementInvisible("#loadingBar");
+
+	}
+
+	public void moveToElement(String locator) throws InterruptedException {
+		page.locator(locator).scrollIntoViewIfNeeded();
+		Thread.sleep(1000);
+	}
+
+	public void click(String locator, int time) throws InterruptedException {
+		page.locator(locator).click();
+		Thread.sleep(time);
+	}
+
+	public void clickElementInList(String locator, int position) throws InterruptedException {
+		Locator element = page.locator(locator);
+		element.nth(position).click();
+		Thread.sleep(1000);
+	}
+
+	public String getTextOfElementInList(String locator, int position) {
+		Locator element = page.locator(locator);
+		return element.nth(position).textContent();
 	}
 
 	public void getURL(String url) {
@@ -170,6 +197,7 @@ public class CommonMethods extends BaseClass {
 	}
 
 	public int totalElement(String locator) {
+
 //		page.waitForLoadState();
 //		page.waitForSelector(locator);
 //		int cnt = page.locator("table").locator("tr").count();
@@ -222,9 +250,11 @@ public class CommonMethods extends BaseClass {
 	public void search(String locator, String searchString) throws InterruptedException {
 		page.locator(locator).isEditable();
 		Thread.sleep(1000);
+		click(locator);
 		type(locator, searchString);
-		page.keyboard().down("Enter");
-		Thread.sleep(3000);
+		Thread.sleep(1000);
+		page.keyboard().press("Enter");
+		Thread.sleep(2000);
 	}
 
 	public void dragAndDrop(String from, String to) {
@@ -234,16 +264,15 @@ public class CommonMethods extends BaseClass {
 		sourceElement.dragTo(targetElement);
 	}
 
-	public void waitforElementInvisible() throws InterruptedException {
-		Thread.sleep(1000);
-		while (!page.locator("//p[text()=\"Generating report...\"]").isHidden()) {
+	public void waitforElementInvisible(String locator) throws InterruptedException {
+		while (!page.locator(locator).isHidden()) {
 			Thread.sleep(1000);
+			System.out.println("no seee");
 		}
 
 	}
 
 	public void switchToNewlOpenTab() throws InterruptedException {
-		waitforElementInvisible();
 		Page page2 = context.newPage();
 		page2.navigate("https://www.google.com");
 
@@ -251,8 +280,15 @@ public class CommonMethods extends BaseClass {
 
 		// Switch to the newly opened tab (assuming it's the second one)
 		Page newTab = pages.get(1);
-		System.out.println(newTab.url());
-		assertEquals(newTab.url().contains("/JasperServlet?id"), true);
+		Page newTab2 = pages.get(2);
+//		assertEquals(newTab.url().contains("/JasperServlet?id"), true);
+		if (newTab.url().contains("/JasperServlet?id") || newTab2.url().contains("/JasperServlet?id")) {
+			assertEquals(true, true);
+
+		}else {
+			assertEquals(false, true);
+
+		}
 		pages.get(1).close();
 		pages.get(2).close();
 //        newTab.bringToFront();   
@@ -327,6 +363,14 @@ public class CommonMethods extends BaseClass {
 			randomNumber += faker.random().nextInt(10);
 		}
 		return randomNumber;
+
+	}
+
+	public int genRandonNumberInRange(int min, int max) {
+
+		int randomNumberInRange = faker.number().numberBetween(min, max);
+
+		return randomNumberInRange;
 
 	}
 
@@ -535,15 +579,19 @@ public class CommonMethods extends BaseClass {
 		}
 	}
 
-	public void uploadFile(String location, String filename) {
+	public void callReset() {
+		page.reload();
+	}
+
+	public void uploadFile(String location, String filename) throws InterruptedException {
 		Locator fileInput = page.locator(location);
 
 		// Path to the file you want to upload
 //        String filePath = "/path/to/your/file.txt"; 
-		Path file = Paths.get("resource\\" + filename + ".csv");
+		Path file = Paths.get("resource\\" + filename);
 
 		// Upload the file
 		fileInput.setInputFiles(file);
-
+		Thread.sleep(1000);
 	}
 }

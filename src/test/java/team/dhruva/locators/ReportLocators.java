@@ -15,6 +15,7 @@ public interface ReportLocators {
 	String RUN_BUTTON = "//span[@id=\"contextButtonRun\"]";
 	String RUN_BUTTON_POPUP = "(//span[@id=\"contextButtonRun\"])[2]";
 	String GENERATING_REPORT_POPUP = "//p[text()=\"Generating report...\"]";
+	String GENERATING_REPORT_TEXT = "//p[text()=\"Generating report...\"]";
 	
 	
 }

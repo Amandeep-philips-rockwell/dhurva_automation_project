@@ -24,7 +24,7 @@ public class WOTests extends WOExecutor {
 		search(SEARCH_BOX, woCode);
 		click(CUSTOM_RECORDS.replace("000", woCode));
 		click(TAB_NAME.replace("test", "Misc Costs Page"),1000);
-		addMiscRecords(10);
+		addMiscRecords(100);
 	}
 	
 	

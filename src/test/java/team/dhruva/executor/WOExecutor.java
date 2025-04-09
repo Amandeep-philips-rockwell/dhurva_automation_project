@@ -158,12 +158,19 @@ public class WOExecutor extends CommonMethods implements WOLocators, GlobalLocat
 	}
 	
 	public void addMiscRecords(int count) throws InterruptedException {
+		int n = totalElement("//div[contains(@id,\"MiscCostsPage\")]/table//tr/td[3]//p");
+
 		for (int i = 0;i<count;i++) {
+			System.out.println("adding "+i);
 		click(ADD_MISC_COST_PAGE_ADD_BUTTON);
-		type(MISC_COST_DESCRIPTION_EDITBOX, genRandomString(5));
+		type(MISC_COST_DESCRIPTION_EDITBOX, i+"");
 		type(MISC_COST_EST_QTY_EDITBOX, genRandonNumber(2));
 		type(MISC_COST_QUANTITY_EDITBOX, genRandonNumber(3));
-		click(OK_BUTTON);
+		click(OK_BUTTON,2000);
+		n = n+1;
+		if (totalElement("//div[contains(@id,\"MiscCostsPage\")]/table//tr/td[3]//p")!=n) {
+			System.out.println("record not added");
+		}
 		}
 	}
 

@@ -27,5 +27,14 @@ public interface SMLocators {
 	String EVENT_TRIGGER_RADIO_BUTTON = "//span[contains(text(),\"Event Trigger\")]/../..//input";
 	String TRIGGER_DESCRIPTION_TABLE = "//span[contains(text(),\"Trigger Description\")]/../../../../..//tbody//tr";
 	String EVENT_TRIGGER_NAME_DROPDOWN = "#ASSET_EVENT_TYPE_btn";
+	String EVENT_SCREEN_FIRST_ROW = "//span[contains(text(),\"Asset Event Types\")]/../..//table//tr[1]/td[2]";
 	
+	//files tab
+	String FILE_UPLOAD_BUTTON = "//div[@class=\"listPagingContainer35\"]//select/option[text()=\"File\"]/../../..//img";
+	String FILE_TYPE_DROPDOWN = "//div[contains(@data-cell-element-id,\"intFileTypeID\")]//select";
+	String FILE_UPLOAD_BOX = "//img[@src=\"/pg/upload-button.png\"]/../input[1]";
+	String NOTES_TEXTFEILD = "//span[contains(text(),\"Scheduled Maintenance File\")]/../..//textarea";
+	String ALL_TABLE_ROW_DATA = "//div[@id=\"Files_tableContainer\"]//table//tr[1]/td";
+	String ALL_TABLE_ROW_FOR_FILES = "//div[@id=\"Files_tableContainer\"]//table//tr";
+	String SPECIFIC_CLICK_ON_FILE_TAB_FOR_DOWNLOAD = "//div[@id=\"Files_tableContainer\"]//table//tr[00]/td[5]//a";
 }

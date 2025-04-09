@@ -11,23 +11,24 @@ import team.dhruva.executor.TasksGroupnProjectExecutor;
 
 public class TasksGroupnProjectTests extends TasksGroupnProjectExecutor {
 	public String tasksName = ""; 
-//	@Test(priority = 1)
-//	public void verify_import_in_task_groups() throws Exception {
-//		click(MAINTANACE_MENU);
-//		click(TASK_GROUPS_SUB_MENU);
-//		create_csv_file(WO_HEADER, genData, "WO");
-//		click(IMPORT_BUTTON);
-//		uploadFile(FILE_UPLOAD_FIELD, "WO"+".csv");
-//		click(CONTINUE_BUTTON);
-//		click(CONTINUE_BUTTON);
-//		click(UPLOAD_IMPORT_BUTTON);
-//		click(UPLOAD_DONE_BUTTON);
-//		search(SEARCH_BOX, genData[0]);
-//		Assert.assertEquals(totalRecords(RECORD_COUNT) >= 1, true);
-//		click(TABLE_FIRST_ROW_FIRST_CELL);
-//		Thread.sleep(1000);
-//		Assert.assertEquals(visible(SAVE_BUTTON), true);
-//	}
+	@Test(priority = 1)
+	public void verify_import_in_task_groups() throws Exception {
+		click(MAINTANACE_MENU);
+		click(TASK_GROUPS_SUB_MENU);
+		String[] genData = dataGenForImport();
+		create_csv_file(TASKGROUP_HEADER, genData, "TG");
+		click(IMPORT_BUTTON);
+		uploadFile(FILE_UPLOAD_FIELD, "TG"+".csv");
+		click(CONTINUE_BUTTON);
+		click(CONTINUE_BUTTON);
+		click(UPLOAD_IMPORT_BUTTON);
+		click(UPLOAD_DONE_BUTTON);
+		search(SEARCH_BOX, genData[0]);
+		Assert.assertEquals(totalRecords(RECORD_COUNT) >= 1, true);
+		click(TABLE_FIRST_ROW_FIRST_CELL);
+		Thread.sleep(1000);
+		Assert.assertEquals(visible(TASKGROUP_POPUP_SCREEN_LABLE), true);
+	}
 	
 	@Test(priority = 2)
 	public void verify_export_in_task_groups() throws Exception {

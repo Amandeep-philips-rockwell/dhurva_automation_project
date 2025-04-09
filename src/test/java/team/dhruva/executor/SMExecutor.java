@@ -2,10 +2,12 @@ package team.dhruva.executor;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.microsoft.playwright.Download;
 import com.microsoft.playwright.FileChooser;
 import com.microsoft.playwright.Locator;
 
@@ -136,8 +138,69 @@ public class SMExecutor extends CommonMethods implements GlobalLocators, SMLocat
 		click(ADD_TRIGGER_ICON);
 		click(EVENT_TRIGGER_RADIO_BUTTON);
 		click(EVENT_TRIGGER_NAME_DROPDOWN);
-		click(OK_BUTTON);
+		click(EVENT_SCREEN_FIRST_ROW);
+		click(OK_BUTTON,2000);
 		int new_trigger_row = totalElement(TRIGGER_DESCRIPTION_TABLE);
 		assertEquals(true, trigger_row+2 == new_trigger_row);
+		
+	}
+	public void fileUploadAllType(String locator) throws InterruptedException {
+		String[] types = { "Image", "Default Image", "Map", "Default Map", "Diagram", "Barcode Scan", "Document",
+				"Link", "Note" };
+		List data = null;
+		for (String type : types) {
+			click(locator);
+			selectDropDown(FILE_TYPE_DROPDOWN, type);
+			uploadFile(FILE_UPLOAD_BOX, "sample_file.txt");
+			type(NOTES_TEXTFEILD, type + " file type");
+			click(OK_BUTTON, 3000);
+			data = getAllElements(ALL_TABLE_ROW_DATA.replace("1", (totalElement(ALL_TABLE_ROW_FOR_FILES) - 1) + ""))
+					.allTextContents();
+			assertEquals(verifyFileData(data, "sample_file.txt", type), true);
+
+		}
+
+	}
+
+	public boolean verifyFileData(List data, String filename, String filetype) {
+
+		boolean matchResult = false;
+		boolean fileResult = false;
+
+		assertEquals(data.get(1), filename);
+		assertEquals(data.get(2), filetype);
+		if (data.get(4).equals("Click to view full size image") || data.get(4).equals("Click to open")) {
+			matchResult = true;
+		}
+		assertEquals(true, matchResult);
+		// Wait for the download to start
+		Download download = page.waitForDownload(() -> {
+			// Perform the action that initiates download
+			page.locator(SPECIFIC_CLICK_ON_FILE_TAB_FOR_DOWNLOAD
+					.replace("00", (totalElement(ALL_TABLE_ROW_FOR_FILES) - 1) + "")).click();
+		});
+		// Wait for the download process to complete and save the downloaded file
+		String fileName = download.suggestedFilename();
+		System.out.println("file name = " + fileName);
+		download.saveAs(Paths.get(System.getProperty("user.home") + File.separator + "Downloads", fileName));
+		String filePath = System.getProperty("user.home") + File.separator + "Downloads\\" + filename;
+		File file = new File(filePath);
+
+		if (file.exists()) {
+			long fileSize = file.length(); // Get file size in bytes
+
+			System.out.println("File size: " + fileSize + " bytes");
+
+			// Convert to KB, MB, or GB (optional)
+			double fileSizeKB = (double) fileSize / 1024;
+			System.out.println(fileSizeKB);
+			if (fileSizeKB >= 0) {
+				fileResult = true;
+			} else {
+				fileResult = false;
+			}
+		}
+		return fileResult;
+
 	}
 }

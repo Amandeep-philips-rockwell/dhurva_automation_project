@@ -9,7 +9,6 @@ public interface Constant {
 //	String USERNAME = "amandeepphilips";
 //	String PASSWORD = "12345";
 //	String URL = "https://punesandbox.fiixdevserver.com/";
-	String SELF_SIGNUP = "https://crm.fiixdevserver.com/accounts/signup?package=Lite";
 
 	// STAGE
 String USERNAME = "amandeep.philips";
@@ -22,12 +21,18 @@ String URL = "https://dhruva.fiixstg.com/";
 //String URL = "https://smoketest.macmms.com/";
 	
 //Zilla
-//	
-//	String USERNAME = "apzuser";
+//	String USERNAME = "amandeep";
+//	String PASSWORD = "123456";
+//	String URL = "https://baner.fiixzilla.ninja/";
+	
+//cube
+//	String USERNAME = "amandeep.philips";
 //	String PASSWORD = "12345";
-//	String URL = "https://apent.fiixzilla.ninja/";
+//	String URL = "https://dhruva.fiixcube.com/";
 	
 	
+	String SELF_SIGNUP = "https://crm.fiixdevserver.com/accounts/signup?package=Lite";
+
 
 	List<String> WO_TABS = new ArrayList<String>(Arrays.asList("General", "Completion", "Labor Tasks", "Parts",
 			"Meter Readings", "Purchase Order", "Misc Costs Page", "Notifications", "Files", "Work Log", "Custom"));
@@ -41,6 +46,8 @@ String URL = "https://dhruva.fiixstg.com/";
 	String[] ASSET_HEADER = { "Name", "Code", "Description" };
 	String[] PnS_HEADER = { "Name", "Code", "Description" };
 	String[] BUSINESSES_HEADER = { "Code", "Name", "Address" };
+	String[] TASKGROUP_HEADER = { "Name" };
+
 
 
 }

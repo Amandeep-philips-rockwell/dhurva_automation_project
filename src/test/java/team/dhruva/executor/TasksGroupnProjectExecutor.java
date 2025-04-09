@@ -24,4 +24,10 @@ public class TasksGroupnProjectExecutor extends CommonMethods implements TasksGr
 		}
 		return fixedData;
 	}
+	public String[] dataGenForImport() {
+
+		String[] data = { ("Automation runID - " +" GROUPNAME "+ genRandomString(5)) };
+
+		return data;
+	}
 }

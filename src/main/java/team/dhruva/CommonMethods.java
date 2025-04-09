@@ -594,4 +594,6 @@ public class CommonMethods extends BaseClass {
 		fileInput.setInputFiles(file);
 		Thread.sleep(1000);
 	}
+	
+
 }

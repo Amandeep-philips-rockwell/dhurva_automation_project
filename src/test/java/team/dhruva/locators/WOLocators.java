@@ -25,4 +25,21 @@ public interface WOLocators {
 	String UPLOADING_FILE_SCREEN = "//div[@class=\"dropzone dz-started\"]";
 	String WO_TOP_LABEL = "//span[@class=\"listTopLabelLarge\"][contains(text(),\"Work Orders\")]";
 	String TASK_GROUP_COUNT_TABLE_ROW = "//span[contains(text(),\"Task Groups\")]/../..//table/tbody/tr/td[2]";
+	
+	//files tab
+	String FILE_UPLOAD_BUTTON = "//div[@class=\"listPagingContainer35\"]//select/option[text()=\"File\"]/../../..//img";
+	String FILE_TYPE_DROPDOWN = "//div[contains(@data-cell-element-id,\"intFileTypeID\")]//select";
+	String FILE_UPLOAD_BOX = "//img[@src=\"/pg/upload-button.png\"]/../input[1]";
+	String NOTES_TEXTFEILD = "//span[contains(text(),\"Work Order File\")]/../..//textarea";
+	String ALL_TABLE_ROW_DATA = "//div[@id=\"Files_tableContainer\"]//table//tr[1]/td";
+	String ALL_TABLE_ROW_FOR_FILES = "//div[@id=\"Files_tableContainer\"]//table//tr";
+	String SPECIFIC_CLICK_ON_FILE_TAB_FOR_DOWNLOAD = "//div[@id=\"Files_tableContainer\"]//table//tr[00]/td[5]//a";
+	
+	//misc cost page
+	String ADD_MISC_COST_PAGE_ADD_BUTTON = "(//div[@class=\"listPagingContainer35\"]//img[@title=\"Add\"])[3]";
+	String MISC_COST_DESCRIPTION_EDITBOX = "//span[text()=\"Misc Cost\"]/../..//div[text()=\"Description\"]/..//input";
+	String MISC_COST_EST_QTY_EDITBOX = "//span[text()=\"Misc Cost\"]/../..//div[text()=\"Est Quantity\"]/..//input";
+	String MISC_COST_QUANTITY_EDITBOX = "//span[text()=\"Misc Cost\"]/../..//div[text()=\"Quantity\"]/..//input";
+
+	
 }

@@ -13,7 +13,29 @@ import team.dhruva.executor.SuppliesExecutor;
 
 public class SuppliesTests extends SuppliesExecutor {
 
-	@Test(priority = 1)
+//	@Test(invocationCount = 100,threadPoolSize = 50)
+
+//	@Test()
+//	public void verify_export_in_tree_view_PnS() throws Exception {
+//		click(SUPPLIES_MENU);
+//		click(PART_SUPPLIES_SUB_MENU);
+//		click(TABLE_FIRST_ROW_FIRST_CELL,1000);
+//		click("//li/p[contains(text(),\"Personnel\")]");
+//		click("//div[contains(@id,\"Personnel_tabpage\")]//img");
+//		for(int i = 0;i<200;i++) {
+//		click("(//span[@class=\"formLabelModal\"]/../..//div[contains(@class,\"autoSuggestDropdownButton\")])[2]");
+//		click("(//span[@class=\"ui-draggable-handle\"]/span)[4]");
+//		}
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@Test(priority = 1,groups = "Supplies")
 	public void verify_export_in_tree_view_PnS() throws Exception {
 		click(SUPPLIES_MENU);
 		click(PART_SUPPLIES_SUB_MENU);
@@ -24,7 +46,7 @@ public class SuppliesTests extends SuppliesExecutor {
 		assertEquals(compareList(exportedData, tableData), true);
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,groups = "Supplies")
 	public void verify_export_in_list_view_PnS() throws Exception {
 		click(SUPPLIES_MENU);
 		click(PART_SUPPLIES_SUB_MENU);
@@ -36,7 +58,7 @@ public class SuppliesTests extends SuppliesExecutor {
 	}
 	
 	
-	@Test(priority = 3)
+	@Test(priority = 3,groups = "Supplies")
 	public void verify_import_PnS() throws Exception {
 		click(SUPPLIES_MENU);
 		click(PART_SUPPLIES_SUB_MENU);
@@ -55,7 +77,7 @@ public class SuppliesTests extends SuppliesExecutor {
 
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4,groups = "Supplies")
 	public void createPartSupplies() throws Exception {
 		click(SUPPLIES_MENU);
 		click(NEW_BUTTON);
@@ -68,7 +90,7 @@ public class SuppliesTests extends SuppliesExecutor {
 	
 //-----------------------------------/ Current Stock /----------------------------------//
 	
-	@Test(priority = 101)
+	@Test(priority = 101,groups = "Current Stock")
 	public void verify_export_in_current_stock() throws Exception {
 		click(SUPPLIES_MENU);
 		click(CURRENT_STOCK_SUB_MENU);
@@ -81,7 +103,7 @@ public class SuppliesTests extends SuppliesExecutor {
 	
 //-----------------------------------/ Inventory Cycle Count /----------------------------------//
 	
-		@Test(priority = 301)
+		@Test(priority = 301,groups = "Inventory Cycle Count")
 		public void verify_export_in_inventory_cycle_count() throws Exception {
 			click(SUPPLIES_MENU);
 			click(INVENTORY_CYCLE_COUNT_SUB_MENU);
@@ -93,7 +115,7 @@ public class SuppliesTests extends SuppliesExecutor {
 		
 //-----------------------------------/ Bill Of Materials Groups /----------------------------------//
 
-	@Test(priority = 401)
+	@Test(priority = 401,groups = "BOM groups")
 	public void verify_export_in_bill_of_materials_groups() throws Exception {
 		click(SUPPLIES_MENU);
 		click(BILL_OF_MATERIALS_GROUPS_SUB_MENU);
@@ -105,7 +127,7 @@ public class SuppliesTests extends SuppliesExecutor {
 
 //-----------------------------------/ Businesses /----------------------------------//
 
-	@Test(priority = 501)
+	@Test(priority = 501,groups = {"Business"})
 	public void verify_export_in_businesses() throws Exception {
 		click(SUPPLIES_MENU);
 		click(BUSINESSES_SUB_MENU);
@@ -115,13 +137,13 @@ public class SuppliesTests extends SuppliesExecutor {
 		assertEquals(compareList(exportedData, tableData), true);
 	}
 	
-	@Test(priority = 502)
+	@Test(priority = 502,groups = {"Business"})
 	public void verify_import_in_businesses() throws Exception {
 		click(SUPPLIES_MENU);
 		click(BUSINESSES_SUB_MENU);
 		String[] genData = dataGenForImportBusinesses();
 		create_csv_file(BUSINESSES_HEADER, genData, "BUSINESSES");
-		click(IMPORT_BUTTON);
+		click(IMPORT_BUTTON,500);
 		uploadFile(FILE_UPLOAD_FIELD, "BUSINESSES"+".csv");
 		click(CONTINUE_BUTTON);
 		click(CONTINUE_BUTTON);

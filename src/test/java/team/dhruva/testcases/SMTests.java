@@ -16,8 +16,8 @@ public class SMTests extends SMExecutor {
 	String smCode = "";
 //	String smCode = "SM12251";
 	
-	@Test(priority = 1)
-	public void verify_export() throws Exception {
+	@Test(priority = 1,groups = "SM")
+	public void verify_export_in_SM() throws Exception {
 		click(MAINTANACE_MENU);
 		click(SM_SUB_MENU);
 		click(TABLE_FIRST_ROW_CHECK_BOX);
@@ -28,8 +28,8 @@ public class SMTests extends SMExecutor {
 		assertEquals(compareList(exportedData, fixdata), true);
 	}
 
-	@Test(priority = 2)
-	public void verify_import() throws Exception {
+	@Test(priority = 2,groups = "SM")
+	public void verify_import_in_SM() throws Exception {
 		click(MAINTANACE_MENU);
 		click(SM_SUB_MENU);
 		String[] genData = dataGenForImport();
@@ -47,7 +47,7 @@ public class SMTests extends SMExecutor {
 		Assert.assertEquals(visible(SAVE_BUTTON), true);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,groups = "SM")
 	public void create_SM_Verify_On_Table_From_Search() throws Exception {
 		click(MAINTANACE_MENU);
 		click(SM_SUB_MENU);
@@ -60,8 +60,8 @@ public class SMTests extends SMExecutor {
 		assertEquals(true, totalRecords(RECORD_COUNT) == 1);
 	}
 
-	@Test(priority = 4)
-	public void verify_all_tabs_present() throws Exception {
+	@Test(priority = 4,groups = "SM")
+	public void verify_all_tabs_present_in_SM() throws Exception {
 		click(CUSTOM_RECORDS.replace("000", smCode));
 		Thread.sleep(1000);
 		List<String> SMTabs = getAllElements(ALL_TABS).allTextContents();
@@ -69,8 +69,8 @@ public class SMTests extends SMExecutor {
 
 	}
 	
-	@Test(priority = 5)
-	public void add_tasks() throws Exception {
+	@Test(priority = 5,groups = "SM")
+	public void add_tasks_in_SM() throws Exception {
 		click(MAINTANACE_MENU);
 		click(SM_SUB_MENU,1000);
 		search(SEARCH_BOX, smCode);
@@ -84,8 +84,8 @@ public class SMTests extends SMExecutor {
 
 	}
 
-	@Test(priority = 6)
-	public void add_task_groups() throws Exception {
+	@Test(priority = 6,groups = "SM")
+	public void add_task_groups_in_SM() throws Exception {
 		page_check();
 		search(SEARCH_BOX, smCode);
 		click(CUSTOM_RECORDS.replace("000", smCode));
@@ -94,7 +94,7 @@ public class SMTests extends SMExecutor {
 
 	}
 	
-	@Test(priority = 7)
+	@Test(priority = 7,groups = "SM")
 	public void create_and_verify_all_types_of_scheduler() throws Exception {
 		page_check();
 		search(SEARCH_BOX, smCode);
@@ -104,8 +104,8 @@ public class SMTests extends SMExecutor {
 
 	}
 	
-	@Test(priority = 8)
-	public void check_all_type_file_upload() throws Exception {
+	@Test(priority = 8,groups = "SM")
+	public void check_all_type_file_upload_in_SM() throws Exception {
 		page_check();
 		search(SEARCH_BOX, smCode);
 		click(CUSTOM_RECORDS.replace("000", smCode));

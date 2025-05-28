@@ -11,7 +11,7 @@ import team.dhruva.locators.GlobalLocators;
 import team.dhruva.locators.WOLocators;
 
 public class DashboardTests extends DashboardExecutor {
-	@Test(priority = 1)
+	@Test(priority = 1,groups = "Dashboard")
 	public void create_WO_Verify_Value_On_Dashboard() throws Exception {
 		click(DASHBOARD_MENU);
 		String woCard = getText(HIGH_PRIORITY_WO_CARD);

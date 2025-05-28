@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import team.dhruva.executor.ReportExecutor;
 
 public class ReportTests extends ReportExecutor{
-	@Test(priority = 1)
+	@Test(priority = 1,groups = "Reports")
 	public void createVerifyReports() throws Exception {
 		click(REPORTS_MENU);
 		click(NEW_BUTTON);

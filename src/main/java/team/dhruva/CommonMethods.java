@@ -52,7 +52,8 @@ public class CommonMethods extends BaseClass {
 
 	public Faker faker = new Faker();
 
-	public void type(String locator, String text) {
+	public void type(String locator, String text) throws InterruptedException {
+		click(locator);
 		page.locator(locator).fill(text);
 
 	}
@@ -269,8 +270,15 @@ public class CommonMethods extends BaseClass {
 			Thread.sleep(1000);
 			System.out.println("no seee");
 		}
-
 	}
+	
+	public void waitforElementvisible(String locator) throws InterruptedException {
+		while (page.locator(locator).isHidden()) {
+			Thread.sleep(1000);
+			System.out.println("no seee");
+		}
+	}
+
 
 	public void switchToNewlOpenTab() throws InterruptedException {
 		Page page2 = context.newPage();
@@ -592,7 +600,7 @@ public class CommonMethods extends BaseClass {
 
 		// Upload the file
 		fileInput.setInputFiles(file);
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 	}
 	
 

@@ -12,7 +12,7 @@ import com.microsoft.playwright.Locator;
 import team.dhruva.executor.AssetExecutor;
 
 public class AssetTests extends AssetExecutor{
-	@Test(priority = 1)
+	@Test(priority = 1,groups = "Assert")
 	public void verify_export_in_tree_view() throws Exception {
 		click(ASSETS_MENU);
 		click(ALL_ASSETS_SUB_MENU);
@@ -24,7 +24,7 @@ public class AssetTests extends AssetExecutor{
 
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,groups = "Assert")
 	public void verify_export_in_list_view() throws Exception {
 		click(ASSETS_MENU);
 		click(ALL_ASSETS_SUB_MENU);
@@ -35,7 +35,7 @@ public class AssetTests extends AssetExecutor{
 		assertEquals(compareList(exportedData, tableData), true);
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3,groups = "Assert")
 	public void verify_import() throws Exception {
 		click(ASSETS_MENU);
 		click(ALL_ASSETS_SUB_MENU);
@@ -56,7 +56,7 @@ public class AssetTests extends AssetExecutor{
 
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4,groups = "Assert")
 	public void create_All_Type_assert_Verify_On_Table_From_Search() throws Exception {
 		click(ASSETS_MENU);
 		click(ALL_ASSETS_SUB_MENU);

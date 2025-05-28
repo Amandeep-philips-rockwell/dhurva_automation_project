@@ -11,14 +11,14 @@ public interface Constant {
 //	String URL = "https://punesandbox.fiixdevserver.com/";
 
 	// STAGE
-String USERNAME = "amandeep.philips";
-String PASSWORD = "12345";
-String URL = "https://dhruva.fiixstg.com/";
+//String USERNAME = "amandeep.philips";
+//String PASSWORD = "12345";
+//String URL = "https://dhruva.fiixstg.com/";
 
 //Prod
-//String USERNAME = "Amandeep";
-//String PASSWORD = "cmms1234";
-//String URL = "https://smoketest.macmms.com/";
+String USERNAME = "Amandeep";
+String PASSWORD = "cmms1234";
+String URL = "https://smoketest.macmms.com/";
 	
 //Zilla
 //	String USERNAME = "amandeep";
@@ -30,7 +30,31 @@ String URL = "https://dhruva.fiixstg.com/";
 //	String PASSWORD = "12345";
 //	String URL = "https://dhruva.fiixcube.com/";
 	
+//hammer
+//	String USERNAME = "amandeep";
+//	String PASSWORD = "12345";
+//	String URL = "https://libertyfrac.fiixhammer.ninja";
 	
+//---------------------------------------------------------
+// Tenant test from sales force
+//dev
+//basic
+//String USERNAME = "test@test.com";
+//String PASSWORD = "12345";
+//String URL = "https://dhruva-aptest.fiixdevserver.com";
+//enterprise
+//String USERNAME = "test@test.com";
+//String PASSWORD = "12345";
+//String URL = "https://dhruva-aptestenterprise.fiixdevserver.com/";
+
+//staging
+//String USERNAME = "test@test.com";
+//String PASSWORD = "Cmms@12345";
+//String URL = "https://dhruva-aptest-enterpriseall.fiixstg.com/";
+
+
+
+
 	String SELF_SIGNUP = "https://crm.fiixdevserver.com/accounts/signup?package=Lite";
 
 

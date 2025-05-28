@@ -10,7 +10,7 @@ import team.dhruva.executor.PurshaseExecutor;
 
 public class PurshaseTests extends PurshaseExecutor {
 //------------------------------------ Purshase Order ------------------------------------------	
-	@Test(priority = 101)
+	@Test(priority = 101,groups = "Purchase Order")
 	public void create_Purshase_Order() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_SUB_MENU);
@@ -43,7 +43,7 @@ public class PurshaseTests extends PurshaseExecutor {
 
 	}
 
-	@Test(priority = 102)
+	@Test(priority = 102,groups = "Purchase Order")
 	public void verify_export_for_Purshase_order() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_SUB_MENU);
@@ -56,7 +56,7 @@ public class PurshaseTests extends PurshaseExecutor {
 	}
 
 //------------------------------------ Receipts ------------------------------------------	
-	@Test(priority = 201)
+	@Test(priority = 201,groups = "Receipts")
 	public void create_PO_Receipt() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_RECEIPTS_SUB_MENU);
@@ -85,7 +85,7 @@ public class PurshaseTests extends PurshaseExecutor {
 
 	}
 
-	@Test(priority = 202)
+	@Test(priority = 202,groups = "Receipts")
 	public void verify_export_for_Receipts() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_RECEIPTS_SUB_MENU);
@@ -99,7 +99,7 @@ public class PurshaseTests extends PurshaseExecutor {
 
 //------------------------------------ RFQs ------------------------------------------	
 
-	@Test(priority = 301)
+	@Test(priority = 301,groups = "RFQs")
 	public void create_PO_RFQs() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_RFQs_SUB_MENU);
@@ -132,7 +132,7 @@ public class PurshaseTests extends PurshaseExecutor {
 
 	}
 
-	@Test(priority = 302)
+	@Test(priority = 302,groups = "RFQs")
 	public void verify_export_for_RFQs() throws Exception {
 		click(PURCHASING_MENU);
 		click(PO_RFQs_SUB_MENU);

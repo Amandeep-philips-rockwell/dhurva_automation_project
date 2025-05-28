@@ -6,7 +6,7 @@ import team.dhruva.executor.AuditTrailExecutor;
 
 public class AuditTrailTests extends AuditTrailExecutor {
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = "Audit Trail")
 	public void verifyAudiTrailforWO() throws Exception {
 		click(AUDIT_TRAIL_MENU);
 		iFrameClick(IFRAME_ID, START_DATE_PICKER);
@@ -19,7 +19,7 @@ public class AuditTrailTests extends AuditTrailExecutor {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2,groups = "Audit Trail")
 	public void verifyAudiTrailforEquipmentS() throws Exception {
 		click(AUDIT_TRAIL_MENU);
 		iFrameClick(IFRAME_ID, EQUIPMENT_TAB);

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface Constant {
 	// DEV
-//	String USERNAME = "amandeepphilips";
-//	String PASSWORD = "12345";
-//	String URL = "https://punesandbox.fiixdevserver.com/";
+	String USERNAME = "amandeepphilips";
+	String PASSWORD = "12345";
+	String URL = "https://punesandbox.fiixdevserver.com/";
 
 	// STAGE
 //String USERNAME = "amandeep.philips";
@@ -16,9 +16,9 @@ public interface Constant {
 //String URL = "https://dhruva.fiixstg.com/";
 
 //Prod
-String USERNAME = "Amandeep";
-String PASSWORD = "cmms1234";
-String URL = "https://smoketest.macmms.com/";
+//String USERNAME = "Amandeep";
+//String PASSWORD = "cmms1234";
+//String URL = "https://smoketest.macmms.com/";
 	
 //Zilla
 //	String USERNAME = "amandeep";

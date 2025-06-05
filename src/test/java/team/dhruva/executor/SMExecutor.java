@@ -144,40 +144,51 @@ public class SMExecutor extends CommonMethods implements GlobalLocators, SMLocat
 		assertEquals(true, trigger_row+2 == new_trigger_row);
 		
 	}
-	public void fileUploadAllType(String locator) throws InterruptedException {
+	public void fileUploadAllType(String singlefile, String Multifile) throws InterruptedException {
 		String[] types = { "Image", "Default Image", "Map", "Default Map", "Diagram", "Barcode Scan", "Document",
 				"Link", "Note" };
 		List data = null;
-		for (String type : types) {
-			click(locator);
-			selectDropDown(FILE_TYPE_DROPDOWN, type);
-			uploadFile(FILE_UPLOAD_BOX, "sample_file.txt");
-			type(NOTES_TEXTFEILD, type + " file type");
-			click(OK_BUTTON, 3000);
-			data = getAllElements(ALL_TABLE_ROW_DATA.replace("1", (totalElement(ALL_TABLE_ROW_FOR_FILES) - 1) + ""))
-					.allTextContents();
-			assertEquals(verifyFileData(data, "sample_file.txt", type), true);
+		if (visible(singlefile)) {
+			for (String type : types) {
+				click(singlefile);
+				selectDropDown(FILE_TYPE_DROPDOWN, type);
+				uploadFile(FILE_UPLOAD_BOX, "sample_file.txt");
+				type(NOTES_TEXTFEILD, type + " file type");
+				click(OK_BUTTON, 3000);
+				verifyFileData(type, "sample_file.txt", false);
+			}
+		} else {
+			uploadFile_Multifile(Multifile, "sample_file_multifile.txt", MULTIFILE_DROP_ZONE);
+			verifyFileData("sample_file_multifile.txt", "sample_file_multifile.txt", true);
 
 		}
 
 	}
 
-	public boolean verifyFileData(List data, String filename, String filetype) {
 
+	public void verifyFileData(String type, String filename, boolean multifile) {
 		boolean matchResult = false;
 		boolean fileResult = false;
-
-		assertEquals(data.get(1), filename);
-		assertEquals(data.get(2), filetype);
-		if (data.get(4).equals("Click to view full size image") || data.get(4).equals("Click to open")) {
+		String hreftxt = "";
+		if (!multifile) {
+			assertEquals(visible(CUSTOME_NOTES_CHECK.replace("xx", type)), true);
+			hreftxt = getText(CUSTOME_HREF.replace("xx", type));
+		}else {
+			hreftxt = getText(CUSTOME_HREF.replace("xx file type", type));
+		}
+		if (hreftxt.equals("Click to view full size image") || hreftxt.equals("Click to open")) {
 			matchResult = true;
 		}
-		assertEquals(true, matchResult);
+		assertEquals(matchResult, true);
 		// Wait for the download to start
 		Download download = page.waitForDownload(() -> {
-			// Perform the action that initiates download
-			page.locator(SPECIFIC_CLICK_ON_FILE_TAB_FOR_DOWNLOAD
-					.replace("00", (totalElement(ALL_TABLE_ROW_FOR_FILES) - 1) + "")).click();
+//			 Perform the action that initiates download
+			if (!multifile) {
+				page.locator(CUSTOME_HREF.replace("xx", type)).click();
+			}else {
+				page.locator(CUSTOME_HREF.replace("xx file type", type)).click();
+
+			}
 		});
 		// Wait for the download process to complete and save the downloaded file
 		String fileName = download.suggestedFilename();
@@ -196,11 +207,8 @@ public class SMExecutor extends CommonMethods implements GlobalLocators, SMLocat
 			System.out.println(fileSizeKB);
 			if (fileSizeKB >= 0) {
 				fileResult = true;
-			} else {
-				fileResult = false;
 			}
 		}
-		return fileResult;
+		assertEquals(fileResult, true);
 
-	}
-}
+	}}

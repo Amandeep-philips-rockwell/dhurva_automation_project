@@ -40,10 +40,12 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Download;
+import com.microsoft.playwright.FileChooser;
 import com.microsoft.playwright.Frame;
 import com.microsoft.playwright.Keyboard;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
@@ -601,6 +603,23 @@ public class CommonMethods extends BaseClass {
 		// Upload the file
 		fileInput.setInputFiles(file);
 		Thread.sleep(1500);
+	}
+	
+	
+	public void uploadFile_Multifile(String location, String filename, String multifile) throws InterruptedException {
+		
+        // 1. Start waiting for the FileChooser event AND perform the click inside the lambda
+        FileChooser fileChooser = page.waitForFileChooser(() -> {
+            // 2. Click the icon that opens the file selector.
+            //    Use the most reliable locator for your icon.
+            page.locator(location).click(); // Replace with your icon's selector
+        });
+
+        // 3. Set the file(s) on the captured FileChooser object.
+        fileChooser.setFiles(Paths.get("resource\\" + filename));
+        waitforElementInvisible(multifile);
+//		Thread.sleep(1500);
+        System.out.println("File uploaded successfully.");  
 	}
 	
 

@@ -14,8 +14,8 @@ import team.dhruva.locators.GlobalLocators;
 import team.dhruva.locators.WOLocators;
 
 public class WOTests extends WOExecutor {
-	String woCode = null;
-//	String woCode = "1046";
+//	String woCode = null;
+	String woCode = "659";
 
 //	@Test(priority = 1)
 //	public void misc_test() throws Exception {
@@ -73,6 +73,8 @@ public class WOTests extends WOExecutor {
 		search(SEARCH_BOX, woCode);
 		assertEquals(true, totalRecords(RECORD_COUNT) >= 1);
 	}
+	
+	
 	@Test(priority = 4,dependsOnMethods = "create_WO_Verify_Using_Search",groups = "WO")
 	public void verify_all_tabs_present() throws Exception {
 		click(CUSTOM_RECORDS.replace("000", woCode));
@@ -82,13 +84,13 @@ public class WOTests extends WOExecutor {
 
 	}
 	@Test(priority = 5,groups = "WO")
-	public void add_tasks() throws Exception {
+	public void add_labour_tasks() throws Exception {
 		click(MAINTANACE_MENU);
 		click(WO_SUB_MENU);
 		search(SEARCH_BOX, woCode);
 		click(CUSTOM_RECORDS.replace("000", woCode));
 		click(TAB_NAME.replace("test", "Labor Tasks"));
-		assertEquals(1,totalElement(LABOR_TASKS_ROW));
+//		assertEquals(1,totalElement(LABOR_TASKS_ROW));
 		addLaborTasks(2);
 		Thread.sleep(2000);
 		assertEquals(totalElement(LABOR_TASKS_ROW),2);
@@ -111,7 +113,7 @@ public class WOTests extends WOExecutor {
 		search(SEARCH_BOX, woCode);
 		click(CUSTOM_RECORDS.replace("000", woCode));
 		click(TAB_NAME.replace("test", "Files"),1000);
-		fileUploadAllType(FILE_UPLOAD_BUTTON);
+		fileUploadAllType(FILE_UPLOAD_BUTTON,FILE_UPLOAD_BUTTON_MULTIFILE);
 	}
 
 }

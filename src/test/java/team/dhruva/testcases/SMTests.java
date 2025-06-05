@@ -110,6 +110,6 @@ public class SMTests extends SMExecutor {
 		search(SEARCH_BOX, smCode);
 		click(CUSTOM_RECORDS.replace("000", smCode));
 		click(TAB_NAME.replace("test", "Files"),1000);
-		fileUploadAllType(FILE_UPLOAD_BUTTON);
+		fileUploadAllType(FILE_UPLOAD_BUTTON,FILE_UPLOAD_BUTTON_MULTIFILE);
 	}
 }

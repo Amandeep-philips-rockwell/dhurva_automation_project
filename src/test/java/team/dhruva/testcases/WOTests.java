@@ -14,8 +14,8 @@ import team.dhruva.locators.GlobalLocators;
 import team.dhruva.locators.WOLocators;
 
 public class WOTests extends WOExecutor {
-//	String woCode = null;
-	String woCode = "659";
+	String woCode = "";
+//	String woCode = "659";
 
 //	@Test(priority = 1)
 //	public void misc_test() throws Exception {

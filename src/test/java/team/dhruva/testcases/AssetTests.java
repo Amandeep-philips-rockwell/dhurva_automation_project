@@ -10,8 +10,14 @@ import org.testng.annotations.Test;
 import com.microsoft.playwright.Locator;
 
 import team.dhruva.executor.AssetExecutor;
+import team.dhruva.executor.WOExecutor;
+import team.dhruva.locators.WOLocators;
 
-public class AssetTests extends AssetExecutor{
+public class AssetTests extends AssetExecutor implements WOLocators{
+	WOExecutor wo_common = new WOExecutor();
+	
+	String assetCode = "";
+
 	@Test(priority = 1,groups = "Assert")
 	public void verify_export_in_tree_view() throws Exception {
 		click(ASSETS_MENU);
@@ -72,26 +78,36 @@ public class AssetTests extends AssetExecutor{
 			if (i == 0) {
 				click(OK_BUTTON);
 				click(SAVE_BUTTON);
-				String assetName = getText(ASSET_NAME_EDITBOX);
+				assetCode = getText(ASSET_NAME_EDITBOX);
 				click(BACK_BUTTON);
-				search(SEARCH_BOX, assetName);
+				search(SEARCH_BOX, assetCode);
 				Assert.assertEquals(true, totalRecords(RECORD_COUNT) == 1);
 			} else if (i == 1) {
 				click(NO_SITE_SITE);
 				click(SAVE_BUTTON);
-				String assetName = getText(ASSET_NAME_EDITBOX);
+				assetCode = getText(ASSET_NAME_EDITBOX);
 				click(BACK_BUTTON);
-				search(SEARCH_BOX, assetName);
+				search(SEARCH_BOX, assetCode);
 				Assert.assertEquals(true, totalRecords(RECORD_COUNT) == 1);
 
 			} else {
 				click(NO_SITE_SITE);
 				click(SAVE_BUTTON);
-				String assetName = getText(ASSET_NAME_EDITBOX);
+				assetCode = getText(ASSET_NAME_EDITBOX);
 				click(BACK_BUTTON);
-				search(SEARCH_BOX, assetName);
+				search(SEARCH_BOX, assetCode);
 				Assert.assertEquals(true, totalRecords(RECORD_COUNT) == 1);
 			}
 		}
+	}
+	
+	@Test(priority = 5,groups = "Asset")
+	public void check_all_type_file_upload() throws Exception {
+		click(ASSETS_MENU);
+		click(ALL_ASSETS_SUB_MENU);
+		search(SEARCH_BOX, assetCode);
+		click(CUSTOM_RECORD_ASSET.replace("000", assetCode));
+		click(TAB_NAME.replace("test", "Files"),1000);
+		wo_common.fileUploadAllType(FILE_UPLOAD_BUTTON,FILE_UPLOAD_BUTTON_MULTIFILE);
 	}
 }

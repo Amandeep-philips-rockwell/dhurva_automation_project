@@ -33,6 +33,9 @@ public class Reporting extends CommonMethods implements ITestListener {
 //        String[] groups = result.getTestContext().getCurrentXmlTest().getGroups().getIncludeNames().toArray(new String[0]);
 //        test = extent.createTest(testName);
 //        test.assignCategory(String.join(", ", groups));
+		 for (String group : result.getMethod().getGroups()) {
+	            test.assignCategory(group);
+	        }
 	}
 
 	@Override

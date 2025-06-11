@@ -31,7 +31,7 @@ public interface WOLocators {
 	String FILE_UPLOAD_BUTTON_MULTIFILE = "//div[contains(@id,\"tabPage_Files_tabpage\")]//div[@title=\"Click here to upload files\"]";
 	String FILE_TYPE_DROPDOWN = "//div[contains(@data-cell-element-id,\"intFileTypeID\")]//select";
 	String FILE_UPLOAD_BOX = "//img[@src=\"/pg/upload-button.png\"]/../input[1]";
-	String NOTES_TEXTFEILD = "//span[contains(text(),\"Work Order File\")]/../..//textarea";
+	String NOTES_TEXTFEILD = "//span[contains(text(),\" File\")]/../..//textarea";
 	String ALL_TABLE_ROW_DATA = "//div[@id=\"Files_tableContainer\"]//table//tr[1]/td";
 	String ALL_TABLE_ROW_FOR_FILES = "//div[@id=\"Files_tableContainer\"]//table//tr";
 	String SPECIFIC_CLICK_ON_FILE_TAB_FOR_DOWNLOAD = "//div[@id=\"Files_tableContainer\"]//table//tr[00]/td[5]//a";

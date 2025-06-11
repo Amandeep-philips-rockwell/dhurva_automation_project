@@ -7,8 +7,13 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 import team.dhruva.executor.PurshaseExecutor;
+import team.dhruva.executor.WOExecutor;
+import team.dhruva.locators.WOLocators;
 
-public class PurshaseTests extends PurshaseExecutor {
+public class PurshaseTests extends PurshaseExecutor implements WOLocators{
+	
+	WOExecutor wo_common = new WOExecutor();
+	String poCode = "";
 //------------------------------------ Purshase Order ------------------------------------------	
 	@Test(priority = 101,groups = "Purchase Order")
 	public void create_Purshase_Order() throws Exception {
@@ -17,7 +22,7 @@ public class PurshaseTests extends PurshaseExecutor {
 		click(NEW_BUTTON);
 		click(NO_SITE_SITE);
 		click(SAVE_BUTTON);
-		String poCode = getText(PURCHASE_ORDER_NO);
+		poCode = getText(PURCHASE_ORDER_NO);
 		poCode = poCode.replace("Purchase Order: PO#", "");
 		Thread.sleep(1000);
 		assertEquals(true, getText(PO_STATUS_TEXT).contains("Draft"));
@@ -55,6 +60,17 @@ public class PurshaseTests extends PurshaseExecutor {
 		assertEquals(compareList(exportedData, fixdata), true);
 	}
 
+	
+	
+	@Test(priority = 103,groups = "Purchase Order")
+	public void check_all_type_file_upload() throws Exception {
+		click(PURCHASING_MENU);
+		click(PO_SUB_MENU);
+		search(SEARCH_BOX, poCode);
+		click(CUSTOM_PO_CODE.replace("000", poCode));
+		click(TAB_NAME.replace("test", "Files"),1000);
+		wo_common.fileUploadAllType(FILE_UPLOAD_BUTTON,FILE_UPLOAD_BUTTON_MULTIFILE);
+	}
 //------------------------------------ Receipts ------------------------------------------	
 	@Test(priority = 201,groups = "Receipts")
 	public void create_PO_Receipt() throws Exception {

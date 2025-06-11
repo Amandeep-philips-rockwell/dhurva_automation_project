@@ -484,7 +484,7 @@ public class CommonMethods extends BaseClass {
 //				b.trim();
 
 				if (a != null && b != null) {
-					System.out.println("Comparing " + a + " = " + b);
+//					System.out.println("Comparing " + a + " = " + b); // extra log
 					// Compare the elements
 					if (!a.equals(b)) {
 						System.out.println(a + " != " + b);

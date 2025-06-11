@@ -4,7 +4,7 @@ public interface GlobalLocators {
 	String DROWNDOWN_VALUE_HIGHEST = "//div[@class=\"modalWindowFrame ui-draggable\"]//p[text()=\"Highest\"]";
 	String SAVE_BUTTON = "//div[text()=\"Save\"]";
 	String SEARCH_BOX = "//input[contains(@placeholder,\"search\")]";
-	String OK_BUTTON = "//div[contains(text(),\"OK\")]";
+	String OK_BUTTON = "(//div[contains(text(),\"OK\")])[1]";
 	String OK_BUTTON_2 = "(//div[contains(text(),\"OK\")])[2]";
 	String OK_BUTTON_3 = "(//div[contains(text(),\"OK\")])[3]";
 	String BACK_BUTTON = "//div[@class=\"actionButton action noselect\"]/span[text()=\"Back\"]";
